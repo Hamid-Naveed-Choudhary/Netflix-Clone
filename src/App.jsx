@@ -8,14 +8,14 @@ import { auth } from "./firebase"
 
 const App = () => {
 
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
-   useEffect(() => {
+  useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
         console.log("Logged In");
         navigate('/');
-      }else{
+      } else {
         console.log("Logged Out");
         navigate('/login');
       }
