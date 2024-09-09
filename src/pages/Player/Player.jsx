@@ -14,12 +14,14 @@ const Player = () => {
     published_at: "",
     typeof: ""
   })
-
+  const {
+    VITE_TMDB_AUTHORIZATION
+  } = import.meta.env
   const options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMTBmNWRiMTlmN2Y5MzMzZmY1ZGJhMDRkYTk3MmUwYiIsIm5iZiI6MTcyMDUzNTc4MS42NzYzODUsInN1YiI6IjY2OGQ0OTAwODQyZjlhYTkyM2IyZTEzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5sDgg83zrPnMsbXNgwqz3patrR5-A62DWMgK48FlOxY'
+      Authorization: VITE_TMDB_AUTHORIZATION
     }
   };
 
