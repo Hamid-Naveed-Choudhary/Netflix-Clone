@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: 18
 
@@ -25,7 +25,6 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # Update upload-artifact action from v2 to v3
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v3
         with:
@@ -39,7 +38,6 @@ jobs:
     if: github.ref == 'refs/heads/master'
 
     steps:
-      # Update download-artifact action from v2 to v3
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
