@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from "react";
-import "./Player.css";
-import back_arrow_icon from "../../assets/back_arrow_icon.png";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react"
+import "./Player.css"
+import back_arrow_icon from "../../assets/back_arrow_icon.png"
+import { useNavigate, useParams } from "react-router-dom"
 
 const Player = () => {
+
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [apiData, setApiData] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-
+  const [apiData, setApiData] = useState({
+    name: "",
+    key: "",
+    published_at: "",
+    typeof: ""
+  })
   const VITE_TMDB_AUTHORIZATION = import.meta.env.VITE_TMDB_AUTHORIZATION;
-
   const options = {
     method: 'GET',
     headers: {
@@ -21,68 +23,33 @@ const Player = () => {
     }
   };
 
+
   useEffect(() => {
-    if (!VITE_TMDB_AUTHORIZATION) {
-      setError("API key is missing");
-      setLoading(false);
-      return;
-    }
-
     fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, options)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        return response.json();
-      })
-      .then(data => {
-        // Find the YouTube video in the response
-        const youtubeVideo = data.results.find(video => video.site === 'YouTube');
-        if (youtubeVideo) {
-          setApiData(youtubeVideo);
-        } else {
-          setError("No YouTube video available");
-        }
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error(err);
-        setError("An error occurred");
-        setLoading(false);
-      });
-  }, [id, VITE_TMDB_AUTHORIZATION]);
+      .then(response => response.json())
+      .then(response => setApiData(response.results[0]))
+      .catch(err => console.error(err));
+  }, [])
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
 
   return (
     <div className='player'>
-      <img
-        src={back_arrow_icon}
-        alt='Back'
-        onClick={() => navigate(-1)}
-        className='back-arrow-icon'
-        style={{ cursor: 'pointer' }}
-      />
-      {apiData ? (
-        <iframe
-          width='100%'
-          height='100%'
-          src={`https://www.youtube.com/embed/${apiData.key}`}
-          title='trailer'
-          frameBorder='0'
-          allowFullScreen
-        ></iframe>
-      ) : (
-        <div>No video available</div>
-      )}
+      <img src={back_arrow_icon} alt='' onClick={() => { navigate(-2) }} />
+      <iframe
+        width='90%'
+        height='90%'
+        src={`https://www.youtube.com/embed/${apiData.key}`}
+        title='trailer'
+        frameBorder='0'
+        allowFullScreen
+      ></iframe>
+      <div className="player-info">
+        <p>{apiData.published_at.slice(0, 10)}</p>
+        <p>{apiData.name}</p>
+        <p>{apiData.type}</p>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default Player;
+export default Player

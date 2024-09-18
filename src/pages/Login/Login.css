@@ -2,18 +2,11 @@
     height: 100vh;
     background-image: linear-gradient(#0000007e, #0000007e),
         url(/background_banner.jpg);
-    background-size: cover;
-    /* Ensure the background image covers the whole area */
-    background-position: center;
-    /* Center the background image */
     padding: 20px 8%;
 }
 
 .login-logo {
     width: 150px;
-    display: block;
-    margin: 0 auto;
-    /* Center the logo horizontally */
 }
 
 .login-form {
@@ -23,16 +16,12 @@
     border-radius: 4px;
     padding: 60px;
     margin: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    /* Add shadow for better contrast */
 }
 
 .login-form h1 {
     font-size: 32px;
     font-weight: 500;
     margin-bottom: 28px;
-    color: #fff;
-    /* Ensure text is visible on dark background */
 }
 
 .login-form input {
@@ -105,15 +94,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.8);
-    /* Dark background for the spinner */
 }
 
 .login-spinner img {
     width: 60px;
 }
 
-@media (max-width: 500px) {
+@media (max-width:500px) {
     .login {
         padding: 15px 5%;
     }
@@ -121,20 +108,5 @@
     .login-form {
         padding: 20px;
         margin-top: 30px;
-    }
-
-    .login-form h1 {
-        font-size: 28px;
-        /* Adjust heading size for smaller screens */
-    }
-
-    .login-form input {
-        font-size: 14px;
-        /* Adjust font size for inputs */
-    }
-
-    .login-form button {
-        font-size: 14px;
-        /* Adjust font size for button */
     }
 }

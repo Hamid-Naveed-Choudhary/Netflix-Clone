@@ -4,12 +4,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #000;
-    /* Add a background color for contrast */
-    padding: 20px;
-    /* Add padding for better spacing */
-    box-sizing: border-box;
-    /* Ensure padding is included in height */
 }
 
 .player img {
@@ -18,41 +12,15 @@
     left: 20px;
     width: 50px;
     cursor: pointer;
-    z-index: 10;
-    /* Ensure it appears above other elements */
 }
 
 .player iframe {
     border-radius: 10px;
-    border: none;
-    /* Remove default border */
-    width: 90%;
-    height: 80%;
-    /* Adjust height to fit better */
-    max-width: 1000px;
-    /* Ensure iframe doesn't get too wide */
-    max-height: 600px;
-    /* Ensure iframe doesn't get too tall */
 }
 
 .player-info {
     display: flex;
-    flex-direction: column;
-    /* Stack info vertically */
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 90%;
-    margin-top: 20px;
-    /* Space between video and info */
-    color: #fff;
-    /* Text color for better visibility */
-}
-
-.player-info p {
-    margin: 5px 0;
-    /* Add margin for spacing between lines */
-    font-size: 16px;
-    /* Adjust font size */
-    text-align: center;
-    /* Center align text */
 }
